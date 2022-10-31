@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 var buttonColours = ["red", "blue", "green", "yellow"];
 
@@ -10,7 +9,6 @@ var started = false;
 var level = 0;
 
 //if started display the level and initiate next sequence.
-=======
 var buttonColours = ["red", "blue", "green", "yellow"];
 
 var gamePattern = [];
@@ -23,7 +21,6 @@ var level = 0;
 
 
 //detect keypress and display level
->>>>>>> cf0df59 (Add aditional comments)
 $(document).keypress(function() {
   if (!started) {
     $("#level-title").text("Level " + level);
@@ -32,77 +29,21 @@ $(document).keypress(function() {
   }
 });
 
-<<<<<<< HEAD
 
 //detect clicks, play sounds accordingly then check checkAnswer
 
 $(".btn").click(function() {
 
   var userChosenColour = $(this).attr("id");
-=======
 //record the button click, get the ID and store it in an array above.
 $(".btn").click(function() {
 
   var userChosenColour = $(this).attr("id");
 
->>>>>>> cf0df59 (Add aditional comments)
   userClickedPattern.push(userChosenColour);
 
   playSound(userChosenColour);
   animatePress(userChosenColour);
-<<<<<<< HEAD
-
-  checkAnswer(userClickedPattern.length - 1);
-});
-
-
-// check answer on current level by comparing game pattern array
-// and userClickedPattern arrays and play "wrong" sound if user fails.
-
-function checkAnswer(currentLevel) {
-
-    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
-      if (userClickedPattern.length === gamePattern.length){
-        setTimeout(function () {
-          nextSequence();
-        }, 1000);
-      }
-    } else {
-      playSound("wrong");
-      $("body").addClass("game-over");
-      $("#level-title").text("Game Over, Press Any Key to Restart");
-
-      setTimeout(function () {
-        $("body").removeClass("game-over");
-      }, 200);
-
-      startOver();
-    }
-}
-
-//reset user clicked pattern, create random pattern and animate accordingly.
-
-function nextSequence() {
-  userClickedPattern = [];
-  level++;
-  $("#level-title").text("Level " + level);
-  var randomNumber = Math.floor(Math.random() * 4);
-  var randomChosenColour = buttonColours[randomNumber];
-  gamePattern.push(randomChosenColour);
-
-  $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
-  playSound(randomChosenColour);
-}
-
-//animate the pressed buttons
-function animatePress(currentColor) {
-  $("#" + currentColor).addClass("pressed");
-  setTimeout(function () {
-    $("#" + currentColor).removeClass("pressed");
-  }, 100);
-}
-//play sound function
-=======
   checkAnswer(userClickedPattern.length - 1);
 });
 
@@ -154,7 +95,6 @@ function animatePress(currentColour) {
 }
 
 //play relevant sounds
->>>>>>> cf0df59 (Add aditional comments)
 function playSound(name) {
   var audio = new Audio("sounds/" + name + ".mp3");
   audio.play();
