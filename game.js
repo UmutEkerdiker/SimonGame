@@ -1,14 +1,12 @@
 
 var buttonColours = ["red", "blue", "green", "yellow"];
 
-// create arrays to store the game pattern and user's pattern
 var gamePattern = [];
 var userClickedPattern = [];
 
 var started = false;
 var level = 0;
 
-//if started display the level and initiate next sequence.
 $(document).keypress(function() {
   if (!started) {
     $("#level-title").text("Level " + level);
@@ -16,9 +14,6 @@ $(document).keypress(function() {
     started = true;
   }
 });
-
-
-//detect clicks, play sounds accordingly then check checkAnswer
 
 $(".btn").click(function() {
 
@@ -30,10 +25,6 @@ $(".btn").click(function() {
 
   checkAnswer(userClickedPattern.length - 1);
 });
-
-
-// check answer on current level by comparing game pattern array
-// and userClickedPattern arrays and play "wrong" sound if user fails.
 
 function checkAnswer(currentLevel) {
 
@@ -56,8 +47,6 @@ function checkAnswer(currentLevel) {
     }
 }
 
-//reset user clicked pattern, create random pattern and animate accordingly.
-
 function nextSequence() {
   userClickedPattern = [];
   level++;
@@ -70,20 +59,18 @@ function nextSequence() {
   playSound(randomChosenColour);
 }
 
-//animate the pressed buttons
 function animatePress(currentColor) {
   $("#" + currentColor).addClass("pressed");
   setTimeout(function () {
     $("#" + currentColor).removeClass("pressed");
   }, 100);
 }
-//play sound function
+
 function playSound(name) {
   var audio = new Audio("sounds/" + name + ".mp3");
   audio.play();
 }
 
-//set the level to zero, reset game pattern array and set started false.
 function startOver() {
   level = 0;
   gamePattern = [];
